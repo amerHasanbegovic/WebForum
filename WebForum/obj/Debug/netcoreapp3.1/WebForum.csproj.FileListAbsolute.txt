@@ -1,0 +1,7 @@
+D:\Repos\WebForum\WebForum\obj\Debug\netcoreapp3.1\WebForum.csprojAssemblyReference.cache
+D:\Repos\WebForum\WebForum\obj\Debug\netcoreapp3.1\WebForum.AssemblyInfoInputs.cache
+D:\Repos\WebForum\WebForum\obj\Debug\netcoreapp3.1\WebForum.AssemblyInfo.cs
+D:\Repos\WebForum\WebForum\obj\Debug\netcoreapp3.1\WebForum.csproj.CoreCompileInputs.cache
+D:\Repos\WebForum\WebForum\obj\Debug\netcoreapp3.1\WebForum.MvcApplicationPartsAssemblyInfo.cache
+D:\Repos\WebForum\WebForum\obj\Debug\netcoreapp3.1\WebForum.RazorAssemblyInfo.cache
+D:\Repos\WebForum\WebForum\obj\Debug\netcoreapp3.1\WebForum.RazorAssemblyInfo.cs

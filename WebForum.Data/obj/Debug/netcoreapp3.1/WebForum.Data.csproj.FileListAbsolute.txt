@@ -1,0 +1,6 @@
+D:\Repos\WebForum\WebForum.Data\bin\Debug\netcoreapp3.1\WebForum.Data.deps.json
+D:\Repos\WebForum\WebForum.Data\bin\Debug\netcoreapp3.1\WebForum.Data.dll
+D:\Repos\WebForum\WebForum.Data\obj\Debug\netcoreapp3.1\WebForum.Data.csprojAssemblyReference.cache
+D:\Repos\WebForum\WebForum.Data\obj\Debug\netcoreapp3.1\WebForum.Data.AssemblyInfoInputs.cache
+D:\Repos\WebForum\WebForum.Data\obj\Debug\netcoreapp3.1\WebForum.Data.AssemblyInfo.cs
+D:\Repos\WebForum\WebForum.Data\obj\Debug\netcoreapp3.1\WebForum.Data.csproj.CoreCompileInputs.cache
