@@ -10,6 +10,12 @@ namespace WebForum.Service
     public class ForumService : IForum
     {
         private readonly ApplicationDbContext _context;
+
+        public ForumService(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
         public Task Create(Forum forum)
         {
             throw new NotImplementedException();

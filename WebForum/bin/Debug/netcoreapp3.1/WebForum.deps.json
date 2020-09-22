@@ -31,6 +31,7 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.8",
           "Microsoft.EntityFrameworkCore.Tools": "3.1.8",
           "WebForum.Data": "1.0.0",
+          "WebForum.Service": "1.0.0",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "3.1.0.0",
@@ -1469,6 +1470,17 @@
         },
         "compile": {
           "WebForum.Data.dll": {}
+        }
+      },
+      "WebForum.Service/1.0.0": {
+        "dependencies": {
+          "WebForum.Data": "1.0.0"
+        },
+        "runtime": {
+          "WebForum.Service.dll": {}
+        },
+        "compile": {
+          "WebForum.Service.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/3.1.0.0": {
@@ -3793,6 +3805,11 @@
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
     },
     "WebForum.Data/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "WebForum.Service/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

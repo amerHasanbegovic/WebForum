@@ -1538,6 +1538,22 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
+      },
+      "WebForum.Service/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "WebForum.Data": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/WebForum.Service.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/WebForum.Service.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       }
     }
   },
@@ -5660,6 +5676,11 @@
       "type": "project",
       "path": "../WebForum.Data/WebForum.Data.csproj",
       "msbuildProject": "../WebForum.Data/WebForum.Data.csproj"
+    },
+    "WebForum.Service/1.0.0": {
+      "type": "project",
+      "path": "../WebForum.Service/WebForum.Service.csproj",
+      "msbuildProject": "../WebForum.Service/WebForum.Service.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -5670,7 +5691,8 @@
       "Microsoft.EntityFrameworkCore >= 3.1.8",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.8",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.8",
-      "WebForum.Data >= 1.0.0"
+      "WebForum.Data >= 1.0.0",
+      "WebForum.Service >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -5705,6 +5727,9 @@
           "projectReferences": {
             "D:\\Repos\\WebForum\\WebForum.Data\\WebForum.Data.csproj": {
               "projectPath": "D:\\Repos\\WebForum\\WebForum.Data\\WebForum.Data.csproj"
+            },
+            "D:\\Repos\\WebForum\\WebForum.Service\\WebForum.Service.csproj": {
+              "projectPath": "D:\\Repos\\WebForum\\WebForum.Service\\WebForum.Service.csproj"
             }
           }
         }

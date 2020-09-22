@@ -6,6 +6,7 @@ using WebForum.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WebForum.Service;
 
 namespace WebForum
 {
@@ -27,6 +28,7 @@ namespace WebForum
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
+            services.AddScoped<IForum, ForumService>();
             services.AddRazorPages();
         }
 
