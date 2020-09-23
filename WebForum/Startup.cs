@@ -29,6 +29,7 @@ namespace WebForum
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddScoped<IForum, ForumService>();
+            services.AddScoped<IPost, PostService>();
             services.AddRazorPages();
         }
 
