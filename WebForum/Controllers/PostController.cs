@@ -15,8 +15,13 @@ namespace WebForum.Controllers
             _postService = postService;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int id)
         {
+            var post = _postService.GetById(id);
+            var model = new PostIndexModel
+            {
+
+            }
             return View();
         }
     }

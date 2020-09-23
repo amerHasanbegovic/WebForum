@@ -11,7 +11,6 @@ namespace WebForum.Models.Reply
         public string AuthorImageUrl { get; set; }
         public DateTime dateTime { get; set; }
         public string ReplyContent { get; set; }
-
         public int PostId { get; set; }
     }
 }
