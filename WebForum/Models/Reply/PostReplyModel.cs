@@ -9,7 +9,7 @@ namespace WebForum.Models.Reply
         public string AuthorName { get; set; }
         public int AuthorRating { get; set; }
         public string AuthorImageUrl { get; set; }
-        public DateTime dateTime { get; set; }
+        public DateTime DateTime { get; set; }
         public string ReplyContent { get; set; }
         public int PostId { get; set; }
     }
