@@ -10,7 +10,7 @@ using WebForum.Data;
 namespace WebForum.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200922212805_initial entity models")]
+    [Migration("20200925195452_initial entity models")]
     partial class initialentitymodels
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -175,11 +175,17 @@ namespace WebForum.Data.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
+
+                    b.Property<DateTime>("MemberSince")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("NormalizedEmail")
                         .HasColumnType("nvarchar(256)")
@@ -197,6 +203,12 @@ namespace WebForum.Data.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("ProfileImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("int");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
@@ -255,6 +267,9 @@ namespace WebForum.Data.Migrations
                     b.Property<string>("Content")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
                     b.Property<int?>("ForumId")
                         .HasColumnType("int");
 
@@ -263,9 +278,6 @@ namespace WebForum.Data.Migrations
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("dateTime")
-                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 

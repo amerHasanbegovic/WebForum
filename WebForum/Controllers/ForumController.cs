@@ -38,7 +38,6 @@ namespace WebForum.Controllers
         {
             var forum = _forumService.GetById(id);
             var posts = _postService.GetPostsByForum(id);
-            //var posts = _postService.GetPostsByForum(id);
             var postListings = posts.Select(post => new PostListingModel
             {
                 Id = post.Id,
@@ -47,7 +46,7 @@ namespace WebForum.Controllers
                 AuthorName = post.User.UserName,
                 AuthorRating = post.User.Rating,
                 Title = post.Title,
-                DatePosted = post.dateTime.ToString(),
+                DatePosted = post.Created.ToString(),
                 RepliesCount = post.Replies.Count()
             });
 

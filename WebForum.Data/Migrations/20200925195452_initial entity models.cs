@@ -39,7 +39,11 @@ namespace WebForum.Data.Migrations
                     TwoFactorEnabled = table.Column<bool>(nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
-                    AccessFailedCount = table.Column<int>(nullable: false)
+                    AccessFailedCount = table.Column<int>(nullable: false),
+                    Rating = table.Column<int>(nullable: false),
+                    ProfileImageUrl = table.Column<string>(nullable: true),
+                    MemberSince = table.Column<DateTime>(nullable: false),
+                    IsActive = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -176,7 +180,7 @@ namespace WebForum.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(nullable: true),
                     Content = table.Column<string>(nullable: true),
-                    dateTime = table.Column<DateTime>(nullable: false),
+                    Created = table.Column<DateTime>(nullable: false),
                     UserId = table.Column<string>(nullable: true),
                     ForumId = table.Column<int>(nullable: true)
                 },
