@@ -98,3 +98,4 @@ D:\Repos\WebForum\WebForum\bin\Debug\netcoreapp3.1\WebForum.Service.dll
 D:\Repos\WebForum\WebForum\bin\Debug\netcoreapp3.1\WebForum.Service.pdb
 D:\Repos\WebForum\WebForum\obj\Debug\netcoreapp3.1\Razor\Views\Forum\Index.cshtml.g.cs
 D:\Repos\WebForum\WebForum\obj\Debug\netcoreapp3.1\Razor\Views\Forum\Topic.cshtml.g.cs
+D:\Repos\WebForum\WebForum\obj\Debug\netcoreapp3.1\Razor\Views\Post\Index.cshtml.g.cs
