@@ -30,7 +30,6 @@ namespace WebForum.Service
         public IEnumerable<Forum> GetAll()
         {
             return _context.Forums.Include(forum => forum.Posts);
-
         }
 
         public IEnumerable<ApplicationUser> GetAllActiveUsers()
@@ -43,7 +42,7 @@ namespace WebForum.Service
             var forum = _context.Forums.Where(f => f.Id == id)
                 .Include(p => p.Posts).ThenInclude(f => f.User)
                 .Include(p => p.Posts).ThenInclude(p => p.Replies).ThenInclude(f => f.User)
-                .FirstOrDefault();
+                .First();
             return forum;
         }
 

@@ -64,7 +64,8 @@ namespace WebForum.Controllers
 
             await _postService.Add(post); //block the thread until task is complete
             //user rating management, TODO
-            return RedirectToAction("Index", "Post", new { id = post.Id});
+            return RedirectToAction("Index", "Post", new { id = post.Id });
+            //new { id = post.Id }
         }
 
         private Post BuildPost(NewPostModel model, ApplicationUser user)
