@@ -9,4 +9,3 @@ D:\Repos\WebForum\WebForum.Data\bin\Debug\netcoreapp3.1\WebForum.Data.runtimecon
 D:\Repos\WebForum\WebForum.Data\bin\Debug\netcoreapp3.1\WebForum.Data.runtimeconfig.dev.json
 D:\Repos\WebForum\WebForum.Data\obj\Debug\netcoreapp3.1\WebForum.Data.genruntimeconfig.cache
 D:\Repos\WebForum\WebForum.Data\obj\Debug\netcoreapp3.1\WebForum.Data.csproj.CoreCompileInputs.cache
-D:\Repos\WebForum\WebForum.Data\obj\Debug\netcoreapp3.1\WebForum.Data.csprojAssemblyReference.cache

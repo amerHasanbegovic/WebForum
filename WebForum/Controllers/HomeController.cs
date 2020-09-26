@@ -52,11 +52,12 @@ namespace WebForum.Controllers
 
         private ForumListingModel GetForum(Post post)
         {
+            var forum = post.Forum;
             return new ForumListingModel
             {
-                Id = post.Forum.Id,
-                Title = post.Forum.Title,
-                ImageUrl = post.Forum.ImageUrl
+                Id = forum.Id,
+                Title = forum.Title,
+                ImageUrl = forum.ImageUrl
             };
         }
 
