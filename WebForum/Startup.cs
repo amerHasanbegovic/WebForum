@@ -7,6 +7,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WebForum.Service;
 using WebForum.Data.Models;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
+using Microsoft.AspNetCore.Http;
 
 namespace WebForum
 {
@@ -49,6 +52,12 @@ namespace WebForum
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            //app.UseStaticFiles(new StaticFileOptions
+            //{
+            //    FileProvider = new PhysicalFileProvider(
+            //       Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot")),
+            //    RequestPath = new PathString("/wwwroot")
+            //});
 
             app.UseRouting();
 

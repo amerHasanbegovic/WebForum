@@ -2,6 +2,10 @@
 @inject SignInManager<WebForum.Data.Models.ApplicationUser> SignInManager
 @inject UserManager<WebForum.Data.Models.ApplicationUser> UserManager
 
+@section css {
+    <link rel="stylesheet" href="~/css/site.css" type="text/css" />
+}
+
 <ul class="navbar-nav">
     @if (SignInManager.IsSignedIn(User))
     {
