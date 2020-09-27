@@ -12,7 +12,7 @@
         <li class="nav-item dropdown">
             <a class="nav-link text-dark dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
                asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello <span class="text-danger">@User.Identity.Name!</span><span class="caret"></span></a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu bg-secondary">
                 <li><a class="text-dark nav-link" asp-controller="Profile" asp-action="Detail">My Profile</a></li>
                 @if (User.IsInRole("Admin"))
                 {

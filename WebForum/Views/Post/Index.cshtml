@@ -1,26 +1,26 @@
 ﻿@model WebForum.Models.Post.PostIndexModel
 
-<h1>@Model.Title</h1>
+<h2>@Model.Title</h2>
 
 <div>
-    Author: @Model.AuthorName (@Model.AuthorRating)
-    Created: @Model.Created
+    <small>
+        Author: @Model.AuthorName (@Model.AuthorRating) | @Model.Created
+    </small>
 </div>
 <div>
-    @Model.PostContent
+    <p style="font-family: 'Roboto', serif" class="pt-3 pb-1 border-bottom">@Model.PostContent</p>
 </div>
 
 @if (Model.Replies.Any())
 {
     foreach (var reply in Model.Replies)
     {
-        <div>
+        <div class="pt-3 pb-1 border-bottom">
             <div>
-                Reply Author: @reply.AuthorName
-                Reply Created: @reply.DateTime
+                <p>Re: <span>@reply.ReplyContent</span></p>
             </div>
             <div>
-                Reply: @reply.ReplyContent
+                <span><small>@reply.AuthorName | @reply.DateTime</small></span>
             </div>
         </div>
     }
