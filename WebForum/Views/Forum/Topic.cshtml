@@ -1,6 +1,7 @@
 ﻿@model WebForum.Models.Forum.ForumTopicModel
 
-<div class="text-center p-2">
+<div class="text-left p-2">
+    <div class="forumLogo" style="background-image: url(@Model.Forum.ImageUrl); height: 38px; margin-top: 5px;"></div>
     <h2>Welcome to the <span class="text-danger">@Model.Forum.Title</span> Forum!</h2>
     <small>@Model.Forum.Description</small>
     <hr />
