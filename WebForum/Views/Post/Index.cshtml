@@ -2,11 +2,11 @@
 
 <span><a class="btn btn-sm btn-outline-dark" asp-controller="Forum" asp-action="Topic" asp-route-id="@Model.ForumId">Back to @Model.ForumName</a></span>
 <hr class="pb-3" />
-<div class="d-flex">
+<div class="d-flex postBg">
     <div class="col-md-2">
-        <div style="background-image: url(@Model.AuthorImageUrl)"></div>
-        <div>
-            <p><small><a asp-controller="Profile" asp-action="Detail" asp-route-id="@Model.AuthorId">@Model.AuthorName</a> (@Model.AuthorRating)</small></p>
+        <div class="authorImagePost mx-auto" style="background-image: url(@Model.AuthorImageUrl);"></div>
+        <div class="text-center">
+            <small><a asp-controller="Profile" asp-action="Detail" asp-route-id="@Model.AuthorId">@Model.AuthorName</a> (@Model.AuthorRating)</small>
             @if (@Model.IsAuthorAdmin)
             {
                 <span class="small">Admin</span>
@@ -14,7 +14,7 @@
         </div>
     </div>
     <div style="border-left: 1px solid black;" class="col-md-10">
-        <h3>@Model.Title</h3>
+        <h4 class="text-danger">@Model.Title</h4>
         <p style="font-family: 'Roboto', serif" class="pt-3 pb-1 border-bottom">@Model.PostContent</p>
         <p><small>@Model.Created</small></p>
     </div>
@@ -35,9 +35,9 @@
 {
     foreach (var reply in Model.Replies)
     {
-        <div>
-            <div style="float: left;" class="col-md-2">
-                <div style="background-image: url(@reply.AuthorImageUrl)"></div>
+        <div class="d-flex">
+            <div class="col-md-2">
+                <div class="authorReplyImage" style="background-image: url(@reply.AuthorImageUrl);"></div>
                 <div>
                     <p><small><a asp-controller="Profile" asp-action="Detail" asp-route-id="@reply.AuthorId">@reply.AuthorName</a> (@reply.AuthorRating)</small></p>
                 </div>
@@ -48,7 +48,7 @@
                     </div>
                 }
             </div>
-            <div style="float: left; border-left: 1px solid black;" class="col-md-10">
+            <div sstyle="border-left: 1px solid black;" class="col-md-10">
                 <p style="font-family: 'Roboto', serif" class="pt-3 pb-1 border-bottom">@reply.ReplyContent</p>
                 <p><small>@reply.DateTime</small></p>
             </div>

@@ -4,12 +4,12 @@
 
 @foreach (var forum in Model.ForumList)
 {
-<a class="text-decoration-none text-dark" asp-controller="Forum" asp-action="Topic" asp-route-id="@forum.Id">
-    <div class="card col-md-2 d-inline-flex p-2" title="@forum.Description">
-        <div class="forumLogo mx-auto" style="background-image: url(@forum.ImageUrl);"></div>
-        <div class="card-body text-center d-inline-block">
-            <span class="card-text">@forum.Title</span>
+    <a class="text-decoration-none text-dark" asp-controller="Forum" asp-action="Topic" asp-route-id="@forum.Id">
+        <div class="card col-md-2 p-1 d-inline-flex" title="@forum.Description">
+            <div class="forumLogo mx-auto" style="background-image: url(@forum.ImageUrl);"></div>
+            <div class="card-body text-center d-inline-block">
+                <span class="card-text">@forum.Title</span>
+            </div>
         </div>
-    </div>
-</a>
+    </a>
 }

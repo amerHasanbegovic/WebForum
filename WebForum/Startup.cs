@@ -53,12 +53,6 @@ namespace WebForum
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            //app.UseStaticFiles(new StaticFileOptions
-            //{
-            //    FileProvider = new PhysicalFileProvider(
-            //       Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot")),
-            //    RequestPath = new PathString("/wwwroot")
-            //});
 
             app.UseRouting();
 

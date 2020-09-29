@@ -42,11 +42,30 @@ a.navbar-brand {
     background-position: center;
     background-repeat: no-repeat;
 }
+.authorImagePost{
+    height: 60%;
+    width: 80%;
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    margin-top: 15px;
+}
+.authorReplyImage{
+    height: 30px;
+    width: 30px;
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+.postBg{
+    background-color: rgba(128, 128, 128, 0.10);
+    border-radius: 5px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1), 0 6px 6px rgba(0, 0, 0, 0.1);
+}
  /*Provide sufficient contrast against white background*/ 
 a {
   color: #0366d6;
 }
-
 .btn-primary {
   color: #fff;
   background-color: #1b6ec2;
