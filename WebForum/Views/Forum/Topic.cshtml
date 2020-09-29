@@ -1,18 +1,47 @@
 ﻿@model WebForum.Models.Forum.ForumTopicModel
 
-<div class="text-left p-2">
+<a class="btn btn-sm btn-outline-dark mb-3" asp-controller="Forum" asp-action="Index">
+    Back
+</a>
+<hr />
+
+<div class="text-left">
     <div class="forumLogo" style="background-image: url(@Model.Forum.ImageUrl); height: 38px; margin-top: 5px;"></div>
     <h2>Welcome to the <span class="text-danger">@Model.Forum.Title</span> Forum!</h2>
     <small>@Model.Forum.Description</small>
     <hr />
 </div>
-<span id="headingBtn">
-    <a asp-controller="Post" asp-action="Create" asp-route-id="@Model.Forum.Id" class="btn btn-primary btn-newPost">Create post</a>
-</span>
+
+<div class="col-md-12 p-0">
+    <form asp-controller="Forum" asp-action="Search" method="post">
+        <div class="col-md-11 float-left p-0">
+            <input style="width: 100%" asp-for="SearchQuery" type="text" placeholder="Search.." class="searchBar" onfocus="clearThis(this)" />
+        </div>
+        <div class="col-md-1 float-left">
+            <button type="submit" class="btn p-0" style="width: 100%">
+                <i class="material-icons">search</i>
+            </button>
+        </div>
+        <input asp-for="Forum.Id" name="id" type="hidden" />
+    </form>
+</div>
+
+@if (Context.User.Identity.IsAuthenticated && Model.Posts.Any())
+{
+    <span id="headingBtn">
+        <a asp-controller="Post" asp-action="Create" asp-route-id="@Model.Forum.Id" class="btn btn-danger mt-2">Create post</a>
+    </span>
+}
+@if (!Context.User.Identity.IsAuthenticated && Model.Posts.Any())
+{
+    <span id="headingBtn">
+        <a asp-controller="Account" asp-action="Register" class="btn btn-danger mt-2">Create post</a>
+    </span>
+}
 
 @if (Model.Posts.Any())
 {
-    <table class="table table-bordered table-hover">
+    <table class="table table-bordered table-hover mt-3">
         <tbody>
             @foreach (var post in Model.Posts)
             {
@@ -22,7 +51,7 @@
                             @post.Title | (@post.RepliesCount)
                         </a>
                         <small>
-                            @post.AuthorName | @post.DatePosted
+                            <a asp-controller="Profile" asp-action="Detail" asp-route-id="@post.AuthorId">@post.AuthorName</a> | @post.DatePosted
                         </small>
                     </td>
                 </tr>
@@ -32,10 +61,26 @@
 }
 else
 {
-    <div class="noPosts">
+    <br />
+    <div class="noPosts text-center mt-5">
+        <i class="material-icons md-72">question_answer</i>
         <h5>There are no posts in this forum yet..</h5>
-        <a asp-controller="Post" asp-action="Create" asp-route-id="@Model.Forum.Id">
-            Create one?
-        </a>
+        @if (!User.Identity.IsAuthenticated)
+        {
+            <a asp-controller="Account" asp-action="Register" class="btn btn-danger">Register and create one?</a>
+        }
+        else
+        {
+            <a asp-controller="Post" asp-action="Create" asp-route-id="@Model.Forum.Id" class="btn btn-danger">Create one?</a>
+        }
     </div>
+}
+
+
+@section Scripts {
+    <script>
+        clearThis = (target) => {
+            target.value = "";
+        }
+    </script>
 }
