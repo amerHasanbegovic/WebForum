@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Net.Http.Headers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,18 +16,15 @@ namespace WebForum.Service
         {
             _context = context;
         }
-
         public async Task Add(Post post)
         {
             _context.Add(post);
             await _context.SaveChangesAsync();
         }
-
         public Task Delete(int id)
         {
             throw new NotImplementedException();
         }
-
         public Task EditPostContent(int id, string newContent)
         {
             throw new NotImplementedException();
@@ -47,9 +45,10 @@ namespace WebForum.Service
                 .Include(post => post.Forum).First();
         }
 
-        public IEnumerable<Post> GetFilteredPosts(string searchQuery)
+        public IEnumerable<Post> GetFilteredPosts(Forum forum, string searchQuery)
         {
-            throw new NotImplementedException();
+            return string.IsNullOrEmpty(searchQuery) ? forum.Posts : 
+                forum.Posts.Where(post => post.Title.ToLower().Contains(searchQuery.ToLower()) || post.Content.ToLower().Contains(searchQuery.ToLower()));
         }
 
         public IEnumerable<Post> GetLatestPosts(int v)
