@@ -12,5 +12,6 @@ namespace WebForum.Models.Reply
         public DateTime DateTime { get; set; }
         public string ReplyContent { get; set; }
         public int PostId { get; set; }
+        public bool IsAuthorAdmin { get; set; }
     }
 }

@@ -37,9 +37,17 @@ namespace WebForum.Controllers
                 AuthorName = post.User.UserName,
                 AuthorRating = post.User.Rating,
                 PostContent = post.Content,
-                Replies = replies
+                Replies = replies,
+                ForumId = post.Forum.Id,
+                ForumName = post.Forum.Title,
+                IsAuthorAdmin = IsAuthorAdmin(post.User)
             };
             return View(model);
+        }
+
+        private bool IsAuthorAdmin(ApplicationUser user)
+        {
+            return _userManager.GetRolesAsync(user).Result.Contains("Admin");
         }
 
         public IActionResult Create(int id)
@@ -65,7 +73,6 @@ namespace WebForum.Controllers
             await _postService.Add(post); //block the thread until task is complete
             //user rating management, TODO
             return RedirectToAction("Index", "Post", new { id = post.Id });
-            //new { id = post.Id }
         }
 
         private Post BuildPost(NewPostModel model, ApplicationUser user)
@@ -91,7 +98,8 @@ namespace WebForum.Controllers
                 AuthorName = reply.User.UserName,
                 AuthorRating = reply.User.Rating,
                 ReplyContent = reply.Content,
-                DateTime = reply.Created
+                DateTime = reply.Created,
+                IsAuthorAdmin = IsAuthorAdmin(reply.User)
             });
         }
     }
