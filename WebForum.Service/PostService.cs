@@ -48,7 +48,14 @@ namespace WebForum.Service
         public IEnumerable<Post> GetFilteredPosts(Forum forum, string searchQuery)
         {
             return string.IsNullOrEmpty(searchQuery) ? forum.Posts : 
-                forum.Posts.Where(post => post.Title.ToLower().Contains(searchQuery.ToLower()) || post.Content.ToLower().Contains(searchQuery.ToLower()));
+                forum.Posts.Where(post => post.Title.ToLower()
+                .Contains(searchQuery.ToLower()) || post.Content.ToLower().Contains(searchQuery.ToLower()));
+        }
+
+        public IEnumerable<Post> GetFilteredPosts(string searchQuery)
+        {
+            return GetAll().Where(post => post.Title.ToLower()
+            .Contains(searchQuery.ToLower()) || post.Content.ToLower().Contains(searchQuery.ToLower()));
         }
 
         public IEnumerable<Post> GetLatestPosts(int v)

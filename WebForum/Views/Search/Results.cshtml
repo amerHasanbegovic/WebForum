@@ -1,0 +1,65 @@
+﻿@model WebForum.Models.Search.SearchResultModel
+
+<a class="btn btn-sm btn-outline-dark mb-3" asp-controller="Forum" asp-action="Index">
+    Back
+</a>
+<hr />
+
+<div class="text-left">
+    <h5>Search results for: "@Model.SearchQuery"</h5>
+    <hr />
+</div>
+
+<div class="col-md-12 p-0">
+    <form asp-controller="Search" asp-action="Search" method="post">
+        <div class="col-md-11 float-left p-0">
+            <input style="width: 100%" asp-for="SearchQuery" type="text" placeholder="Search.." class="searchBar" onfocus="clearThis(this)" />
+        </div>
+        <div class="col-md-1 float-left">
+            <button type="submit" class="btn p-0" style="width: 100%">
+                <i class="material-icons">search</i>
+            </button>
+        </div>
+    </form>
+</div>
+
+@if (!Model.EmptySearchResults)
+{
+    <table class="table table-bordered table-hover mt-3">
+        <tbody>
+            @foreach (var post in Model.Posts)
+            {
+                <tr>
+                    <td>
+                        <div class="forumLogo" style="background-image: url(@post.Forum.ImageUrl)"></div>
+                        <a class="d-block" asp-controller="Post" asp-action="Index" asp-route-id="@post.Id">
+                            @post.Title | (@post.RepliesCount)
+                        </a>
+                        <small>
+                            <a asp-controller="Profile" asp-action="Detail" asp-route-id="@post.AuthorId">@post.AuthorName</a> | @post.DatePosted
+                        </small>
+                        In <a asp-controller="Forum" asp-action="Topic" asp-route-id="@post.Forum.Id">@post.Forum.Title</a>
+                        <small></small>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <br />
+    <div class="noPosts text-center mt-5">
+        <i class="material-icons md-72">question_answer</i>
+        <h5>No results for @Model.SearchQuery..</h5>
+    </div>
+}
+
+
+@section Scripts {
+    <script>
+        clearThis = (target) => {
+            target.value = "";
+        }
+    </script>
+}
