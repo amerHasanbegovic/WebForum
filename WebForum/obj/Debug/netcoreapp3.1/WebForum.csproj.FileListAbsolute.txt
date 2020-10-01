@@ -100,3 +100,4 @@ D:\Repos\WebForum\WebForum\obj\Debug\netcoreapp3.1\staticwebassets\WebForum.Stat
 D:\Repos\WebForum\WebForum\obj\Debug\netcoreapp3.1\WebForum.dll
 D:\Repos\WebForum\WebForum\obj\Debug\netcoreapp3.1\WebForum.pdb
 D:\Repos\WebForum\WebForum\obj\Debug\netcoreapp3.1\WebForum.genruntimeconfig.cache
+D:\Repos\WebForum\WebForum\obj\Debug\netcoreapp3.1\Razor\Views\Search\Results.cshtml.g.cs

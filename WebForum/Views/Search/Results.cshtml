@@ -1,10 +1,5 @@
 ﻿@model WebForum.Models.Search.SearchResultModel
 
-<a class="btn btn-sm btn-outline-dark mb-3" asp-controller="Forum" asp-action="Index">
-    Back
-</a>
-<hr />
-
 <div class="text-left">
     <h5>Search results for: "@Model.SearchQuery"</h5>
     <hr />
@@ -38,7 +33,7 @@
                         <small>
                             <a asp-controller="Profile" asp-action="Detail" asp-route-id="@post.AuthorId">@post.AuthorName</a> | @post.DatePosted
                         </small>
-                        In <a asp-controller="Forum" asp-action="Topic" asp-route-id="@post.Forum.Id">@post.Forum.Title</a>
+                        in <a asp-controller="Forum" asp-action="Topic" asp-route-id="@post.Forum.Id">@post.Forum.Title</a>
                         <small></small>
                     </td>
                 </tr>
