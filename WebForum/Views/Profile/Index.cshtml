@@ -1,0 +1,36 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model WebForum.Models.Profile.ProfileModel
+@inject UserManager<WebForum.Data.Models.ApplicationUser> UserManager
+
+<div class="container">
+    <div class="row">
+        <div>
+            User Profile
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4" style="background-image: url(@Model.ProfileImageUrl)"></div>
+        @if(User.Identity.Name == Model.Username)
+        {
+            <form method="post" enctype="multipart/form-data" asp-controller="Profile" asp-action="UploadProfileImage">
+                <div id="upload">
+                    <label class="btn btn-default btn-file">
+                        Browse <input type="file" name="file" style="display: none;" />
+                    </label>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </div>
+            </form>
+        }
+    </div>
+</div>
+<div class="col-md-8">
+    <span>@Model.Username</span>
+    @if (@Model.IsAdmin)
+    {
+        <span>Admin</span>
+    }
+    <span>Current rating: @Model.UserRating</span>
+    <span>Email address: @Model.Email</span>
+    <span>Member since: @Model.MemberSince</span>
+
+</div>
