@@ -13,7 +13,7 @@
             <a class="nav-link text-dark dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
                asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello <span class="text-light">@User.Identity.Name!</span><span class="caret"></span></a>
             <ul class="dropdown-menu bg-light">
-                <li><a class="text-dark nav-link" asp-controller="Profile" asp-action="Detail">My Profile</a></li>
+                <li><a class="text-dark nav-link" asp-controller="Profile" asp-action="Detail" asp-route-id="@UserManager.GetUserId(User)">My Profile</a></li>
                 @if (User.IsInRole("Admin"))
                 {
                     <li role="separator" class="dropdown-divider"></li>

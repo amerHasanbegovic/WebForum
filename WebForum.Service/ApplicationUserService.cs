@@ -18,7 +18,7 @@ namespace WebForum.Service
 
         public IEnumerable<ApplicationUser> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Users;
         }
 
         public ApplicationUser GetById(string id)
