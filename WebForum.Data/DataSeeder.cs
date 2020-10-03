@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebForum.Data.Models;
@@ -11,13 +10,13 @@ namespace WebForum.Data
 {
     public class DataSeeder
     {
-        private ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
         public DataSeeder(ApplicationDbContext context)
         {
             _context = context;
         }
-        public Task SeedSuperUser()
+        public async Task<Task> SeedSuperUser()
         {
             var RolesStore = new RoleStore<IdentityRole>(_context);
             var UserStore = new UserStore<ApplicationUser>(_context);
@@ -41,7 +40,7 @@ namespace WebForum.Data
 
             if (!hasAdminRole)
             {
-                RolesStore.CreateAsync(
+                    await RolesStore.CreateAsync(
                     new IdentityRole
                     {
                         Name = "Admin",
@@ -53,10 +52,10 @@ namespace WebForum.Data
 
             if (!hasSuperUser)
             {
-                UserStore.CreateAsync(user);
-                UserStore.AddToRoleAsync(user, "Admin");
+                await UserStore.CreateAsync(user);
+                await UserStore.AddToRoleAsync(user, "Admin");
             }
-            _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
 
             return Task.CompletedTask;
         }
