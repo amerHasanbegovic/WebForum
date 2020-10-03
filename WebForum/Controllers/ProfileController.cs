@@ -31,7 +31,6 @@ namespace WebForum.Controllers
                MemberSince = user.MemberSince,
                ProfileImageUrl = user.ProfileImageUrl,
                IsAdmin = userRoles.Contains("Admin"),
-
             };
             return View(model);
         }

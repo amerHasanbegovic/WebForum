@@ -35,7 +35,7 @@
 @if (!Context.User.Identity.IsAuthenticated && Model.Posts.Any())
 {
     <span id="headingBtn">
-        <a asp-controller="Account" asp-action="Register" class="btn btn-danger mt-2">Create post</a>
+        <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-danger mt-2">Create post</a>
     </span>
 }
 

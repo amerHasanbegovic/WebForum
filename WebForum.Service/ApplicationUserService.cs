@@ -7,7 +7,7 @@ using WebForum.Data.Models;
 
 namespace WebForum.Service
 {
-    class ApplicationUserService : IApplicationUser
+    public class ApplicationUserService : IApplicationUser
     {
         private readonly ApplicationDbContext _context;
 
