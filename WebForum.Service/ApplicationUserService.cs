@@ -34,7 +34,7 @@ namespace WebForum.Service
         public async Task SetProfileImage(string id, Uri uri)
         {
             var user = GetById(id);
-            user.ProfileImageUrl = uri.AbsoluteUri;
+            user.ProfileImageUrl = uri.ToString();
             _context.Update(user);
             await _context.SaveChangesAsync();
         }
