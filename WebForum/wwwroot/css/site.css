@@ -65,6 +65,15 @@ a.navbar-brand {
     border-radius: 5px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.1), 0 6px 6px rgba(0, 0, 0, 0.1);
 }
+.profileImage{
+    height: 100%;
+    width: 100%;
+    border: 1px solid black;
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    padding: 0;
+}
  /*Provide sufficient contrast against white background*/ 
 a {
   color: #0366d6;

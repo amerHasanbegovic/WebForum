@@ -9,26 +9,26 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4">
-            <div style="background-image: url(@Model.ProfileImageUrl); width: 300px; height: 300px;"></div>
+        <div class="col-md-2 pl-0">
+            <div class="profileImage" style="background-image: url(@Model.ProfileImageUrl);"></div>
             @if (User.Identity.Name == Model.Username)
             {
                 <form method="post" enctype="multipart/form-data" asp-controller="Profile" asp-action="UploadProfileImage">
-                    <div id="upload">
-                        <label class="btn btn-primary btn-file m-0">
+                    <div id="upload" class="mt-2">
+                        <label class="btn btn-primary btn-file m-0 btn-sm">
                             Browse <input type="file" name="file" style="display: none;" />
                         </label>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary btn-sm float-right">Submit</button>
                     </div>
                 </form>
             }
         </div>
-        <div class="col-md-8">
-            <p>Username: <span class="text-danger">@Model.Username</span></p>
+        <div class="col-md-10">
             @if (@Model.IsAdmin)
             {
-                <span class="text-danger"> (Admin)</span>
+                <p class="text-danger">Admin</p>
             }
+            <p>Username: <span class="text-danger">@Model.Username</span></p>
             <p>Current rating: <span class="text-danger">@Model.UserRating</span></p>
             <p>Email address: <span class="text-danger">@Model.Email</span></p>
             <p>Member since: <span class="text-danger">@Model.MemberSince</span></p>
