@@ -98,7 +98,7 @@ namespace WebForum.Controllers
                 AuthorName = reply.User.UserName,
                 AuthorRating = reply.User.Rating,
                 ReplyContent = reply.Content,
-                DateTime = reply.Created,
+                Created = reply.Created,
                 IsAuthorAdmin = IsAuthorAdmin(reply.User)
             });
         }

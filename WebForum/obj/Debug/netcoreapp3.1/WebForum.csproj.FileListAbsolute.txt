@@ -181,3 +181,4 @@ D:\Repos\WebForum\WebForum\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_V
 D:\Repos\WebForum\WebForum\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 D:\Repos\WebForum\WebForum\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Login.cshtml.g.cs
 D:\Repos\WebForum\WebForum\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Logout.cshtml.g.cs
+D:\Repos\WebForum\WebForum\obj\Debug\netcoreapp3.1\Razor\Views\Reply\Create.cshtml.g.cs
