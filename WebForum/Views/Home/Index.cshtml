@@ -32,13 +32,16 @@
                                     {
                                         <span>@post.RepliesCount reply | </span>
                                     }
-                                    @if (post.RepliesCount == 0)
-                                    {
-                                        <span>No replies | </span>
-                                    }
                                     else
                                     {
-                                        <span>@post.RepliesCount replies | </span>
+                                        @if (post.RepliesCount == 0)
+                                        {
+                                            <span>No replies | </span>
+                                        }
+                                        else
+                                        {
+                                            <span>@post.RepliesCount replies | </span>
+                                        }
                                     }
                                     <span class="postUser"><a asp-controller="Profile" asp-action="Detail" asp-route-id="@post.AuthorId">@post.AuthorName</a></span>
                                     <span class="postUserRating">(@post.AuthorRating)</span>
