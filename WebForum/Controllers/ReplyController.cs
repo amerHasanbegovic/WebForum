@@ -11,13 +11,15 @@ namespace WebForum.Controllers
     public class ReplyController : Controller
     {
         private readonly IPost _postService;
-        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IApplicationUser _userService;
         private readonly IForum _forumService;
-        public ReplyController(IPost postService, UserManager<ApplicationUser> userManager, IForum forumService)
+        private readonly UserManager<ApplicationUser> _userManager;
+        public ReplyController(IPost postService, UserManager<ApplicationUser> userManager, IForum forumService, IApplicationUser userService)
         {
             _postService = postService;
             _userManager = userManager;
             _forumService = forumService;
+            _userService = userService;
         }
 
         public async Task<IActionResult> Create(int id)
@@ -55,6 +57,7 @@ namespace WebForum.Controllers
 
             var reply = BuildReply(model, user);
             await _postService.AddReply(reply);
+            await _userService.UpdateUserRating(userId, typeof(PostReply));
             return RedirectToAction("Index", "Post", new { id = model.PostId });
         }
 
