@@ -106,7 +106,7 @@ namespace WebForum.Controllers
                 Title = model.Title,
                 Description = model.Description,
                 Created = DateTime.Now,
-                ImageUrl = ImageUri
+                ImageUrl = "/images/" + ImageUri
             };
             await _forumService.Create(forum);
             return RedirectToAction("Index", "Forum");

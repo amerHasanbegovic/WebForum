@@ -14,6 +14,5 @@ namespace WebForum.Data
         Task Delete(int forumId);
         Task UpdateForumTitle(Forum forumId, string newTitle);
         Task UpdateForumDescription(Forum forumId, string newDescription);
-        Task SetForumImage(int forumId, Uri uri);
     }
 }

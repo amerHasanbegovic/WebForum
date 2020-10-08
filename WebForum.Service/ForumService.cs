@@ -17,9 +17,10 @@ namespace WebForum.Service
             _context = context;
         }
 
-        public Task Create(Forum forum)
+        public async Task Create(Forum forum)
         {
-            throw new NotImplementedException();
+            _context.Forums.Add(forum);
+            await _context.SaveChangesAsync();
         }
 
         public Task Delete(int forumId)
@@ -44,14 +45,6 @@ namespace WebForum.Service
                 .Include(p => p.Posts).ThenInclude(p => p.Replies).ThenInclude(f => f.User)
                 .First();
             return forum;
-        }
-
-        public async Task SetForumImage(int forumId, Uri uri)
-        {
-            var forum = GetById(forumId);
-            forum.ImageUrl = uri.ToString();
-            _context.Update(forum);
-            await _context.SaveChangesAsync();
         }
 
         public Task UpdateForumDescription(Forum forumId, string newDescription)

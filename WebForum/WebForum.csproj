@@ -20,8 +20,4 @@
     <ProjectReference Include="..\WebForum.Service\WebForum.Service.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\images\forum\" />
-  </ItemGroup>
-
 </Project>
