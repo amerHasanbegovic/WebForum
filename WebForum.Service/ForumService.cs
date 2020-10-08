@@ -46,6 +46,14 @@ namespace WebForum.Service
             return forum;
         }
 
+        public async Task SetForumImage(int forumId, Uri uri)
+        {
+            var forum = GetById(forumId);
+            forum.ImageUrl = uri.ToString();
+            _context.Update(forum);
+            await _context.SaveChangesAsync();
+        }
+
         public Task UpdateForumDescription(Forum forumId, string newDescription)
         {
             throw new NotImplementedException();

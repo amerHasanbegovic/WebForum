@@ -1,5 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebForum.Data;
 using WebForum.Data.Models;
@@ -12,10 +17,12 @@ namespace WebForum.Controllers
     {
         private readonly IForum _forumService;
         private readonly IPost _postService;
-        public ForumController(IForum forumService, IPost postService)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        public ForumController(IForum forumService, IPost postService, IWebHostEnvironment webHostEnvironment)
         {
             _forumService = forumService;
             _postService = postService;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         public IActionResult Index()
@@ -81,6 +88,47 @@ namespace WebForum.Controllers
                 Description = forum.Description,
                 ImageUrl = forum.ImageUrl
             };
+        }
+        public IActionResult Create()
+        {
+            var model = new NewForumModel();
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddNewForum(NewForumModel model)
+        {
+            var ImageUri = "/images/default.png";
+            if (model.ImageUpload != null)
+                ImageUri = GetImageUri(model.ImageUpload);
+            var forum = new Forum
+            {
+                Title = model.Title,
+                Description = model.Description,
+                Created = DateTime.Now,
+                ImageUrl = ImageUri
+            };
+            await _forumService.Create(forum);
+            return RedirectToAction("Index", "Forum");
+        }
+
+        private string GetImageUri(IFormFile file)
+        {
+            var fileName = "";
+            if (file != null)
+            {
+                string wwwRootPath = _webHostEnvironment.WebRootPath;
+                fileName = Path.GetFileNameWithoutExtension(file.FileName);
+                string extension = Path.GetExtension(file.FileName);
+                fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+
+                string path = Path.Combine(wwwRootPath + "/images/", fileName);
+                using (var fileStream = new FileStream(path, FileMode.Create))
+                {
+                    file.CopyToAsync(fileStream);
+                }
+            }
+            return fileName;
         }
     }
 }
