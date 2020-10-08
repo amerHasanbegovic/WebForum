@@ -2,14 +2,23 @@
 
 <h1>Forums</h1>
 
-@foreach (var forum in Model.ForumList)
-{
-    <a class="text-decoration-none text-dark" asp-controller="Forum" asp-action="Topic" asp-route-id="@forum.Id">
-        <div class="card col-md-2 p-1 d-inline-flex" title="@forum.Description">
-            <div class="forumLogo mx-auto" style="background-image: url(@forum.ImageUrl);"></div>
-            <div class="card-body text-center d-inline-block">
-                <span class="card-text">@forum.Title</span>
-            </div>
-        </div>
-    </a>
-}
+<div class="row">
+    <table class="table table-hover align-content-center" id="tableForumIndex" style="font-size: 1.2rem;">
+        <tbody>
+            @foreach (var forum in Model.ForumList)
+            {
+                <tr>
+                    <td>
+                        <div class="forumLogo" style="background-image: url(@forum.ImageUrl)"></div>
+                    </td>
+                    <td>
+                        <a asp-controller="Forum" asp-action="Topic" asp-route-id="@forum.Id">
+                            @forum.Title
+                        </a>
+                    </td>
+                    <td>@forum.Description</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

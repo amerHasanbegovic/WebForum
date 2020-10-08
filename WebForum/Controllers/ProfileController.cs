@@ -68,5 +68,22 @@ namespace WebForum.Controllers
             }
             return RedirectToAction("Detail", "Profile", new { id = userId });
         }
+        public IActionResult Index()
+        {
+            var profiles = _userService.GetAll().OrderByDescending(u => u.Rating)
+                .Select(user => new ProfileModel
+                {
+                    Email = user.Email,
+                    Username = user.UserName,
+                    ProfileImageUrl = user.ProfileImageUrl,
+                    UserRating = user.Rating,
+                    MemberSince = user.MemberSince
+                });
+            var model = new ProfileListingModel
+            {
+                Profiles = profiles
+            };
+            return View(model);
+        }
     }
 }

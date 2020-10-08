@@ -1,36 +1,34 @@
-﻿@*@using Microsoft.AspNetCore.Identity
-@model WebForum.Models.Profile.ProfileModel
-@inject UserManager<WebForum.Data.Models.ApplicationUser> UserManager
+﻿@model WebForum.Models.Profile.ProfileListingModel
 
 <div class="container">
     <div class="row">
-        <div>
-            User Profile
-        </div>
+        <h4>Users</h4>
     </div>
     <div class="row">
-        <div class="col-md-4" style="background-image: url(@Model.ProfileImageUrl)"></div>
-        @if(User.Identity.Name == Model.Username)
-        {
-            <form method="post" enctype="multipart/form-data" asp-controller="Profile" asp-action="UploadProfileImage">
-                <div id="upload">
-                    <label class="btn btn-default btn-file">
-                        Browse <input type="file" name="file" style="display: none;" />
-                    </label>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                </div>
-            </form>
-        }
+        <table class="table table-hover" id="userIndexTable">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Member Since</th>
+                    <th>Rating</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var profile in Model.Profiles)
+                {
+                    <tr>
+                        <td>
+                            <div class="userImage" style="background-image: url(@profile.ProfileImageUrl)"></div>
+                        </td>
+                        <td>@profile.Username</td>
+                        <td>@profile.Email</td>
+                        <td>@profile.MemberSince</td>
+                        <td>@profile.UserRating</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
-</div>
-<div class="col-md-8">
-    <span>@Model.Username</span>
-    @if (@Model.IsAdmin)
-    {
-        <span>Admin</span>
-    }
-    <span>Current rating: @Model.UserRating</span>
-    <span>Email address: @Model.Email</span>
-    <span>Member since: @Model.MemberSince</span>
-
-</div>*@
+</div> 
