@@ -98,7 +98,7 @@ namespace WebForum.Controllers
         [HttpPost]
         public async Task<IActionResult> AddNewForum(NewForumModel model)
         {
-            var ImageUri = "/images/default.png";
+            var ImageUri = "default.png";
             if (model.ImageUpload != null)
                 ImageUri = GetImageUri(model.ImageUpload);
             var forum = new Forum
