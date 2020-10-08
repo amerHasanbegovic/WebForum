@@ -130,5 +130,10 @@ namespace WebForum.Controllers
             }
             return fileName;
         }
+        public async Task<IActionResult> Remove(int id)
+        {
+            await _forumService.Delete(id);
+            return RedirectToAction("Index", "Forum");
+        }
     }
 }

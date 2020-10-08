@@ -51,7 +51,7 @@
                             @post.Title | (@post.RepliesCount)
                         </a>
                         <small>
-                            <a asp-controller="Profile" asp-action="Detail" asp-route-id="@post.AuthorId">@post.AuthorName</a> | @post.DatePosted
+                            <span>By </span><a asp-controller="Profile" asp-action="Detail" asp-route-id="@post.AuthorId">@post.AuthorName</a> | @post.DatePosted
                         </small>
                     </td>
                 </tr>
@@ -74,6 +74,13 @@ else
             <a asp-controller="Post" asp-action="Create" asp-route-id="@Model.Forum.Id" class="btn btn-danger">Create one?</a>
         }
     </div>
+}
+@if (User.IsInRole("Admin"))
+{
+    <a asp-controller="Forum" asp-action="Remove" asp-route-id="@Model.Forum.Id" class="btn btn-danger float-right mb-5"
+            id="deleteForumBtn" onclick="return confirm('Are you sure?');">
+        Delete Forum
+    </a>
 }
 
 

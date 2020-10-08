@@ -25,8 +25,15 @@ namespace WebForum.Service
 
         public async Task Delete(int forumId)
         {
-            var forum = GetById(forumId);
-            _context.Remove(forum);
+            //var forum = GetById(forumId);
+            //var posts = forum.Posts;
+            //var postReplies = (from post in posts
+            //                   from reply in post.Replies
+            //                   select reply).ToList();
+
+            //_context.Remove(postReplies);
+            //_context.Remove(posts);
+            //_context.Remove(forum);
             await _context.SaveChangesAsync();
         }
 
