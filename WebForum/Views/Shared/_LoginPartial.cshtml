@@ -14,18 +14,18 @@
                asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello <span class="text-light">@User.Identity.Name!</span><span class="caret"></span></a>
             <ul class="dropdown-menu bg-light">
                 <li><a class="text-dark nav-link" asp-controller="Profile" asp-action="Detail" asp-route-id="@UserManager.GetUserId(User)">My Profile</a></li>
-                @if (User.IsInRole("Admin"))
-                {
-                    <li role="separator" class="dropdown-divider"></li>
-                    <li class="dropdown-header">Admin</li>
-                    <li><a asp-controller="Forum" asp-action="Create">Create Forum</a></li>
-                    <li><a asp-controller="Profile" asp-action="Index">View Users</a></li>
-                }
                 <li class="nav-item">
                     <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                         <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
                     </form>
                 </li>
+                @if (User.IsInRole("Admin"))
+                {
+                    <li role="separator" class="dropdown-divider"></li>
+                    <li class="dropdown-header pl-2 text-danger">Admin</li>
+                    <li><a class="nav-link text-dark" asp-controller="Forum" asp-action="Create">Create Forum</a></li>
+                    <li><a class="nav-link text-dark" asp-controller="Profile" asp-action="Index">View Users</a></li>
+                }
             </ul>
         </li>
     }
