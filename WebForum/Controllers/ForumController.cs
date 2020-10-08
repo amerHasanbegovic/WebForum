@@ -123,10 +123,8 @@ namespace WebForum.Controllers
                 fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
 
                 string path = Path.Combine(wwwRootPath + "/images/", fileName);
-                using (var fileStream = new FileStream(path, FileMode.Create))
-                {
-                    file.CopyToAsync(fileStream);
-                }
+                using var fileStream = new FileStream(path, FileMode.Create);
+                file.CopyToAsync(fileStream);
             }
             return fileName;
         }
