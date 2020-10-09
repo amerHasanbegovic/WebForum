@@ -62,9 +62,7 @@ namespace WebForum.Controllers
                 {
                     await file.CopyToAsync(fileStream);
                 }
-
                 await _userService.SetProfileImage(userId, new Uri("/images/user/" + fileName, UriKind.Relative));
-
             }
             return RedirectToAction("Detail", "Profile", new { id = userId });
         }
