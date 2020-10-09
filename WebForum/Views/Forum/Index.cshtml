@@ -1,24 +1,16 @@
 ﻿@model WebForum.Models.Forum.ForumIndexModel
 
-<h1>Forums</h1>
-
+<h1 class="pb-3">Forums</h1>
 <div class="row">
-    <table class="table table-hover align-content-center" id="tableForumIndex" style="font-size: 1.2rem;">
-        <tbody>
-            @foreach (var forum in Model.ForumList)
-            {
-                <tr>
-                    <td>
-                        <div class="forumLogo" style="background-image: url(@forum.ImageUrl)"></div>
-                    </td>
-                    <td>
-                        <a asp-controller="Forum" asp-action="Topic" asp-route-id="@forum.Id">
-                            @forum.Title
-                        </a>
-                    </td>
-                    <td>@forum.Description</td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    @foreach (var forum in Model.ForumList)
+    {
+        <a asp-controller="Forum" asp-action="Topic" asp-route-id="@forum.Id" class="card col-md-2 text-decoration-none text-dark">
+            <div class="forumLogo mx-auto" style="background-image: url(@forum.ImageUrl)"></div>
+            <div class="card-body p-0 pb-2">
+                <div class="card-text text-center">
+                    @forum.Title
+                </div>
+            </div>
+        </a>
+    }
 </div>
