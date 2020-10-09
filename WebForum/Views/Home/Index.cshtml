@@ -3,8 +3,8 @@
 <div class="container">
     <div class="row frontPageSplash">
         <div class="col-md-12 frontPageLearn text-center" style="font-family: 'Roboto', serif">
-            <div class="frontPageHeading">Share and learn!</div>
-            <p class="frontPageSubHeading">WebForum is the best forum in the world!</p>
+            <div class="frontPageHeading">Welcome to <span class="text-primary">WebForum</span>!</div>
+            <p class="frontPageSubHeading">Power is gained by sharing knowledge, not hoarding it.</p>
             <div>
                 <form asp-controller="Search" asp-action="Search" method="post">
                     <input asp-for="SearchQuery" type="text" class="homeSearch" placeholder="Search.." />
@@ -43,14 +43,22 @@
                                             <span>@post.RepliesCount replies | </span>
                                         }
                                     }
-                                    <span class="postUser"><a asp-controller="Profile" asp-action="Detail" asp-route-id="@post.AuthorId">@post.AuthorName</a></span>
-                                    <span class="postUserRating">(@post.AuthorRating)</span>
+                                    <span class="postUser">by <a asp-controller="Profile" asp-action="Detail" asp-route-id="@post.AuthorId" class="text-primary">@post.AuthorName</a></span>
+                                    <span class="postUserRating">(@post.AuthorRating) | </span>
+                                    <a asp-controller="Forum" asp-action="Index" asp-route-id="@post.Forum.Id" class="text-primary">@post.Forum.Title</a>
                                 </div>
                             </td>
                         </tr>
                     }
                 </tbody>
             </table>
+        }
+        else {
+        <div class = "row text-center">
+            <h3>There are no posts in any of the forums..</h3>
+            <p>Choose forum and create one?</p>
+            <a asp-controller="Forum" asp-action="Index" class="btn btn-primary">Choose</a>
+        </div>    
         }
     </div>
 </div>

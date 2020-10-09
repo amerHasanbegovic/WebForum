@@ -6,7 +6,7 @@ for details on configuring this project to bundle and minify static web assets. 
 }
 .frontPageHeading{
     color: #000000;
-    font-size: 2rem;
+    font-size: 3rem;
 }
 .homeSearch{
     width: 100%;
@@ -18,7 +18,7 @@ for details on configuring this project to bundle and minify static web assets. 
     color: #000000;
 }
 .postTitle{
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: bold;
 }
 .postSubTitle span{
