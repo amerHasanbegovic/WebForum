@@ -1,8 +1,17 @@
 ﻿@model WebForum.Models.Forum.ForumTopicModel
 
-<a class="btn btn-sm btn-outline-dark mb-3" asp-controller="Forum" asp-action="Index">
-    Back
-</a>
+<div>
+    <a class="btn btn-sm btn-outline-dark mb-3" asp-controller="Forum" asp-action="Index">
+        Back
+    </a>
+    @if (User.IsInRole("Admin"))
+    {
+        <a asp-controller="Forum" asp-action="Remove" asp-route-id="@Model.Forum.Id" class="btn btn-danger float-right mb-5 btn-sm"
+           id="deleteForumBtn" onclick="return confirm('Are you sure?');">
+            Delete Forum
+        </a>
+    }
+</div>
 <hr />
 
 <div class="text-left">
@@ -74,13 +83,6 @@ else
             <a asp-controller="Post" asp-action="Create" asp-route-id="@Model.Forum.Id" class="btn btn-danger">Create one?</a>
         }
     </div>
-}
-@if (User.IsInRole("Admin"))
-{
-    <a asp-controller="Forum" asp-action="Remove" asp-route-id="@Model.Forum.Id" class="btn btn-danger float-right mb-5"
-            id="deleteForumBtn" onclick="return confirm('Are you sure?');">
-        Delete Forum
-    </a>
 }
 
 
