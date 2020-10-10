@@ -9,11 +9,11 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-2 pl-0">
+        <div class="col-md-2 col-12 pl-0">
             <div class="profileImage" style="background-image: url(@Model.ProfileImageUrl);"></div>
             @if (User.Identity.Name == Model.Username)
             {
-                <form method="post" enctype="multipart/form-data" asp-controller="Profile" asp-action="UploadProfileImage">
+                <form method="post" enctype="multipart/form-data" asp-controller="Profile" asp-action="UploadProfileImage" class="mb-3">
                     <div id="upload" class="mt-2">
                         <label class="btn btn-primary btn-file m-0 btn-sm">
                             Browse <input type="file" name="file" style="display: none;" />
@@ -23,7 +23,7 @@
                 </form>
             }
         </div>
-        <div class="col-md-10">
+        <div class="col-md-10 col-12 userProfileInfo">
             @if (@Model.IsAdmin)
             {
                 <p class="text-danger">Admin</p>

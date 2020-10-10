@@ -1,34 +1,33 @@
 ﻿@model WebForum.Models.Profile.ProfileListingModel
-
 <div class="container">
-    <div class="row">
-        <h4>Users</h4>
-    </div>
-    <div class="row">
-        <table class="table table-hover" id="userIndexTable">
-            <thead>
-                <tr>
-                    <th>Image</th>
-                    <th>Username</th>
-                    <th>Email</th>
-                    <th>Member Since</th>
-                    <th>Rating</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var profile in Model.Profiles)
-                {
+        <div class="row">
+            <h4>Users</h4>
+        </div>
+        <div class="row">
+            <table class="table table-hover table-responsive" id="userIndexTable">
+                <thead>
                     <tr>
-                        <td>
-                            <div class="userImage" style="background-image: url(@profile.ProfileImageUrl)"></div>
-                        </td>
-                        <td>@profile.Username</td>
-                        <td>@profile.Email</td>
-                        <td>@profile.MemberSince</td>
-                        <td>@profile.UserRating</td>
+                        <th>Image</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Member Since</th>
+                        <th>Rating</th>
                     </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-</div> 
+                </thead>
+                <tbody>
+                    @foreach (var profile in Model.Profiles)
+                    {
+                        <tr>
+                            <td>
+                                <div class="userImage" style="background-image: url(@profile.ProfileImageUrl)"></div>
+                            </td>
+                            <td>@profile.Username</td>
+                            <td>@profile.Email</td>
+                            <td>@profile.MemberSince</td>
+                            <td>@profile.UserRating</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div> 
