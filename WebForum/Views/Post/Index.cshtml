@@ -3,7 +3,7 @@
 <span><a class="btn btn-sm btn-outline-dark" asp-controller="Forum" asp-action="Topic" asp-route-id="@Model.ForumId">Back to @Model.ForumName</a></span>
 <hr class="pb-3" />
 <div class="d-flex postBg">
-    <div class="col-md-2">
+    <div class="col-md-2 postAuthorInfo">
         <div class="authorImagePost mx-auto" style="background-image: url(@Model.AuthorImageUrl);"></div>
         <div class="text-center">
             <small><a asp-controller="Profile" asp-action="Detail" asp-route-id="@Model.AuthorId">@Model.AuthorName</a> (@Model.AuthorRating)</small>
@@ -13,10 +13,11 @@
             }
         </div>
     </div>
-    <div style="border-left: 1px solid black;" class="col-md-10">
+    <div style="border-left: 1px solid black;" class="col-md-10 col-12 postContent">
         <h4 class="text-danger">@Model.Title</h4>
         <p style="font-family: 'Roboto', serif" class="pt-3 pb-1 border-bottom">@Model.PostContent</p>
-        <p><small>@Model.Created</small></p>
+        <span><small>@Model.Created</small></span>
+        <span class="authorNamePostResponsive"><small> | <a asp-controller="Profile" asp-action="Detail" asp-route-id="@Model.AuthorId">@Model.AuthorName</a></small> (@Model.AuthorRating)</span>
     </div>
     <div></div>
 </div>
@@ -26,7 +27,7 @@
     foreach (var reply in Model.Replies)
     {
         <div class="d-flex mt-3 bg-light">
-            <div class="col-md-2 border-right">
+            <div class="col-md-2 border-right postAuthorInfo">
                 <div class="authorImagePost mx-auto" style="background-image: url(@reply.AuthorImageUrl);"></div>
                 <div class="text-center">
                     <small>
@@ -38,9 +39,10 @@
                     }
                 </div>
             </div>
-            <div sstyle="border-left: 1px solid black;" class="col-md-10">
+            <div sstyle="border-left: 1px solid black;" class="col-md-10 postContent">
                 <p style="font-family: 'Roboto', serif" class="pt-3 pb-1 border-bottom">@reply.ReplyContent</p>
-                <p><small>@reply.Created</small></p>
+                <span><small>@reply.Created</small></span>
+                <span class="authorNamePostResponsive"><small> | <a asp-controller="Profile" asp-action="Detail" asp-route-id="@reply.AuthorId">@reply.AuthorName</a></small> (@reply.AuthorRating)</span>
             </div>
         </div>
     }
@@ -48,8 +50,7 @@
 else
 {
     <div class="d-flex">
-        <div class="col-md-2"></div>
-        <div class="col-md-10">
+        <div class="col-md-12">
             <small>There are no replies to this post</small>
         </div>
     </div>
@@ -57,9 +58,7 @@ else
 @if (User.Identity.IsAuthenticated)
 {
     <div class="d-flex pt-3">
-        <div class="col-md-2">
-        </div>
-        <div class="col-md-10">
+        <div class="col-md-12">
             <span><a asp-controller="Reply" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-primary btn-sm">Reply</a></span>
         </div>
     </div>

@@ -93,6 +93,15 @@ a.navbar-brand {
     #forumTopicHeading{
         font-size: 1.4rem;
     }
+    .postAuthorInfo{
+        display: none;
+    }
+    .postContent{
+        border: none;
+    }
+    .authorNamePostResponsive{
+        display: inline;
+    }
 }
  /*Provide sufficient contrast against white background*/ 
 a {
