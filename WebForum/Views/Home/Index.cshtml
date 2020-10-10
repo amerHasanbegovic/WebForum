@@ -45,7 +45,7 @@
                                     }
                                     <span class="postUser">by <a asp-controller="Profile" asp-action="Detail" asp-route-id="@post.AuthorId" class="text-primary">@post.AuthorName</a></span>
                                     <span class="postUserRating">(@post.AuthorRating) | </span>
-                                    <a asp-controller="Forum" asp-action="Index" asp-route-id="@post.Forum.Id" class="text-primary">@post.Forum.Title</a>
+                                    <a asp-controller="Forum" asp-action="Topic" asp-route-id="@post.Forum.Id" class="text-primary">@post.Forum.Title</a>
                                 </div>
                             </td>
                         </tr>
