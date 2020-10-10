@@ -1,18 +1,14 @@
 ﻿@model WebForum.Models.Forum.ForumTopicModel
 
+@if (User.IsInRole("Admin"))
+{
 <div>
-    <a class="btn btn-sm btn-outline-dark mb-3" asp-controller="Forum" asp-action="Index">
-        Back
+    <a asp-controller="Forum" asp-action="Remove" asp-route-id="@Model.Forum.Id" class="btn btn-danger float-right mb-5 btn-sm"
+       id="deleteForumBtn" onclick="return confirm('Are you sure?');">
+        Delete Forum
     </a>
-    @if (User.IsInRole("Admin"))
-    {
-        <a asp-controller="Forum" asp-action="Remove" asp-route-id="@Model.Forum.Id" class="btn btn-danger float-right mb-5 btn-sm"
-           id="deleteForumBtn" onclick="return confirm('Are you sure?');">
-            Delete Forum
-        </a>
-    }
 </div>
-<hr />
+}
 
 <div class="text-left">
     <div class="forumLogo" style="background-image: url(@Model.Forum.ImageUrl); height: 38px; margin-top: 5px;"></div>
@@ -21,7 +17,7 @@
     <hr />
 </div>
 
-<div class="col-md-12 p-0"> 
+<div class="col-md-12 p-0">
     <form asp-controller="Forum" asp-action="Search" method="post">
         <div class="col-md-11 float-left p-0">
             <input style="width: 100%" asp-for="SearchQuery" type="text" placeholder="Search.." class="searchBar" onfocus="clearThis(this)" />
@@ -38,7 +34,7 @@
 @if (Context.User.Identity.IsAuthenticated && Model.Posts.Any())
 {
     <span id="headingBtn">
-        <a asp-controller="Post" asp-action="Create" asp-route-id="@Model.Forum.Id" class="btn btn-danger mt-2">Create post</a>
+        <a asp-controller="Post" asp-action="Create" asp-route-id="@Model.Forum.Id" class="btn btn-sm btn-danger mt-2">Create post</a>
     </span>
 }
 @if (!Context.User.Identity.IsAuthenticated && Model.Posts.Any())
