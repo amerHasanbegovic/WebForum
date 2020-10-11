@@ -48,7 +48,12 @@
             <div sstyle="border-left: 1px solid black;" class="col-md-10 postContent">
                 <p style="font-family: 'Roboto', serif" class="pt-3 pb-1 border-bottom">@reply.ReplyContent</p>
                 <span><small>@reply.Created</small></span>
-                <span class="authorNamePostResponsive"><small> | <a asp-controller="Profile" asp-action="Detail" asp-route-id="@reply.AuthorId">@reply.AuthorName</a></small> (@reply.AuthorRating)</span>
+                <span class="authorNamePostResponsive"><small> | 
+                    <a asp-controller="Profile" asp-action="Detail" asp-route-id="@reply.AuthorId">@reply.AuthorName</a></small> (@reply.AuthorRating)</span>
+                @if (User.Identity.IsAuthenticated && User.Identity.Name.Equals(reply.AuthorName))
+                {
+                <a class="btn btn-sm btn-danger float-right" asp-controller="Reply" asp-action="RemoveReply" asp-route-postId="@Model.Id" asp-route-replyId="@reply.Id">x</a>
+                }
             </div>
         </div>
     }
