@@ -18,7 +18,7 @@ namespace WebForum.Controllers
         private readonly IForum _forumService;
         private readonly IApplicationUser _userService;
         private static UserManager<ApplicationUser> _userManager;
-        public PostController(IPost postService, IForum forumService, 
+        public PostController(IPost postService, IForum forumService,
             UserManager<ApplicationUser> userManager, IApplicationUser userService)
         {
             _postService = postService;
@@ -53,7 +53,7 @@ namespace WebForum.Controllers
         {
             return _userManager.GetRolesAsync(user).Result.Contains("Admin");
         }
-        
+
         [Authorize]
         public IActionResult Create(int id)
         {
@@ -66,6 +66,15 @@ namespace WebForum.Controllers
                 AuthorName = User.Identity.Name
             };
             return View(model);
+        }
+
+        [Authorize]
+        public async Task<IActionResult> Remove(int id)
+        {
+            var post = _postService.GetById(id);
+            var forum = _forumService.GetById(post.Forum.Id);
+            await _postService.Delete(id);
+            return RedirectToAction("Topic", "Forum", new { id = forum.Id });
         }
 
         [HttpPost]

@@ -1,7 +1,13 @@
 ﻿@model WebForum.Models.Post.PostIndexModel
 
 <span><a class="btn btn-sm btn-outline-dark" asp-controller="Forum" asp-action="Topic" asp-route-id="@Model.ForumId">Back to @Model.ForumName</a></span>
-<hr class="pb-3" />
+@if (User.Identity.IsAuthenticated && User.Identity.Name.Equals(Model.AuthorName))
+{
+    <a asp-controller="Post" asp-action="Remove" asp-route-id="@Model.Id" class="d-inline btn btn-sm btn-danger float-right">Delete Post</a>
+}
+<br />
+<hr class="pb-2" />
+
 <div class="d-flex postBg">
     <div class="col-md-2 postAuthorInfo">
         <div class="authorImagePost mx-auto" style="background-image: url(@Model.AuthorImageUrl);"></div>
