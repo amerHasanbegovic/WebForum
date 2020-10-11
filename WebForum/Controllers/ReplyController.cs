@@ -63,6 +63,13 @@ namespace WebForum.Controllers
             return RedirectToAction("Index", "Post", new { id = model.PostId });
         }
 
+        [Authorize]
+        public async Task<IActionResult> RemoveReply(int postId, int replyId)
+        {
+            await _postService.RemoveReply(postId, replyId);
+            return RedirectToAction("Index", "Post", new { id = postId });
+
+        }
         private PostReply BuildReply(PostReplyModel model, ApplicationUser user)
         {
             var post = _postService.GetById(model.PostId);

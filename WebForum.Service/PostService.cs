@@ -80,5 +80,14 @@ namespace WebForum.Service
         {
             return _context.Forums.Where(forum => forum.Id == id).First().Posts;
         }
+
+        public async Task RemoveReply(int postId, int replyId)
+        {
+            var post = GetById(postId);
+            var reply = post.Replies.Where(reply => reply.Id == replyId).FirstOrDefault();
+            if (reply != null)
+                _context.PostReplies.Remove(reply);
+            await _context.SaveChangesAsync();
+        }
     }
 }
