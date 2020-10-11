@@ -53,7 +53,9 @@
                     <a asp-controller="Profile" asp-action="Detail" asp-route-id="@reply.AuthorId">@reply.AuthorName</a></small> (@reply.AuthorRating)</span>
                 @if (User.Identity.IsAuthenticated && User.Identity.Name.Equals(reply.AuthorName))
                 {
-                <a class="btn btn-sm btn-danger float-right" asp-controller="Reply" asp-action="RemoveReply" asp-route-postId="@Model.Id" asp-route-replyId="@reply.Id">x</a>
+                <a class="btn btn-sm btn-danger float-right" 
+                   asp-controller="Reply" asp-action="RemoveReply" asp-route-postId="@Model.Id" asp-route-replyId="@reply.Id"
+                   onclick="return confirm('Are you sure?');">x</a>
                 }
             </div>
         </div>
