@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -89,6 +90,8 @@ namespace WebForum.Controllers
                 ImageUrl = forum.ImageUrl
             };
         }
+       
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             var model = new NewForumModel();
@@ -96,6 +99,7 @@ namespace WebForum.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AddNewForum(NewForumModel model)
         {
             var ImageUri = "default.png";

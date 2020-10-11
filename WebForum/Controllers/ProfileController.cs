@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Net.Http.Headers;
 using System;
 using System.IO;
 using System.Linq;
@@ -13,19 +13,18 @@ using WebForum.Models.Profile;
 
 namespace WebForum.Controllers
 {
+    [Authorize]
     public class ProfileController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IApplicationUser _userService;
-        private readonly IUpload _uploadService;
         private readonly IWebHostEnvironment _webHostEnvironment;
         public ProfileController(UserManager<ApplicationUser> userManager,
-            IApplicationUser userService, IUpload uploadService,
+            IApplicationUser userService,
             IWebHostEnvironment webHostEnvironment)
         {
             _userManager = userManager;
             _userService = userService;
-            _uploadService = uploadService;
             _webHostEnvironment = webHostEnvironment;
         }
 
@@ -66,6 +65,8 @@ namespace WebForum.Controllers
             }
             return RedirectToAction("Detail", "Profile", new { id = userId });
         }
+        
+        [Authorize(Roles = "Admin")]
         public IActionResult Index()
         {
             var profiles = _userService.GetAll().OrderByDescending(u => u.Rating)
