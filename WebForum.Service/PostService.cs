@@ -28,9 +28,16 @@ namespace WebForum.Service
             await _context.SaveChangesAsync();
         }
 
-        public Task Delete(int id)
+        public async Task Delete(int id)
         {
-            throw new NotImplementedException();
+            var post = GetById(id);
+            var postReplies = post.Replies;
+
+            if (postReplies != null || postReplies.Count() > 0)
+                foreach (var reply in postReplies)
+                    _context.PostReplies.Remove(reply);
+            _context.Posts.Remove(post);
+            await _context.SaveChangesAsync();
         }
         public Task EditPostContent(int id, string newContent)
         {
