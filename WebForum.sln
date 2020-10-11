@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebForum.Data", "WebForum.D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebForum.Service", "WebForum.Service\WebForum.Service.csproj", "{8725E06F-E2C2-4210-B193-BBD975DFF7DE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebForum.Tests", "WebForum.Tests\WebForum.Tests.csproj", "{0F3D32F7-5627-4055-BABC-83D87E974963}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{8725E06F-E2C2-4210-B193-BBD975DFF7DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8725E06F-E2C2-4210-B193-BBD975DFF7DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8725E06F-E2C2-4210-B193-BBD975DFF7DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F3D32F7-5627-4055-BABC-83D87E974963}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F3D32F7-5627-4055-BABC-83D87E974963}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F3D32F7-5627-4055-BABC-83D87E974963}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F3D32F7-5627-4055-BABC-83D87E974963}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
